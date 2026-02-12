@@ -26,7 +26,7 @@ This is a simple REST service for managing books, members, and lending operation
 
 ```powershell
 # From this repo directory
-psql -h localhost -U postgres -d library -f sql/schema.sql
+Get-Content sql/schemas.sql | docker exec -i library-db psql -U postgres -d library
 ```
 
 ### 3) Configure environment
@@ -37,6 +37,7 @@ Copy `.env.example` to `.env` and adjust as needed.
 
 ```powershell
 python -m venv .venv
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
