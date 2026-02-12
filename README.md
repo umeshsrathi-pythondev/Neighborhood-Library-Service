@@ -17,17 +17,13 @@ This is a simple REST service for managing books, members, and lending operation
 
 ### 1) Create a database (Docker)
 
-```powershell
 # Run PostgreSQL locally
  docker run --name library-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=library -p 5432:5432 -d postgres:16
-```
 
 ### 2) Create tables
 
-```powershell
 # From this repo directory
 psql -h localhost -U postgres -d library -f sql/schema.sql
-```
 
 ### 3) Configure environment
 
@@ -35,23 +31,19 @@ Copy `.env.example` to `.env` and adjust as needed.
 
 ### 4) Install dependencies
 
-```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-```
+
 
 ### 5) Run the server
 
-```powershell
 uvicorn app.main:app --reload
-```
 
 The API will be at `http://127.0.0.1:8000` and Swagger UI at `/docs`.
 
 ## Example Requests
 
-```powershell
 # Create a book
 curl -X POST http://127.0.0.1:8000/books `
   -H "Content-Type: application/json" `
@@ -60,7 +52,7 @@ curl -X POST http://127.0.0.1:8000/books `
 # Create a member
 curl -X POST http://127.0.0.1:8000/members `
   -H "Content-Type: application/json" `
-  -d '{"name":"Avery Holmes","email":"avery@example.com"}'
+  -d '{"name":"Member Test","email":"member_test@example.com"}'
 
 # Borrow a book (book_id=1, member_id=1)
 curl -X POST http://127.0.0.1:8000/loans/borrow `
@@ -74,6 +66,5 @@ curl -X POST http://127.0.0.1:8000/loans/return `
 
 # List loans
 curl http://127.0.0.1:8000/loans
-```
 
 
