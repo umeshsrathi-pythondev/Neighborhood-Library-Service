@@ -77,4 +77,5 @@ curl -X POST http://127.0.0.1:8000/loans/return `
 curl http://127.0.0.1:8000/loans
 ```
 
+Please note there is no dedicated UI for handling this application. As only backend logic is added, we can make use of FastAPI swagger `http://127.0.0.1:8000/docs` for managing the records.
 
