@@ -56,7 +56,7 @@ The API will be at `http://127.0.0.1:8000` and Swagger UI at `/docs`.
 # Create a book
 curl -X POST http://127.0.0.1:8000/books `
   -H "Content-Type: application/json" `
-  -d '{"title":"Dune","author":"Frank Herbert","copies_total":2,"copies_available":2}'
+  -d '{"title":"Test Title1","author":"Test Author1","copies_total":2,"copies_available":2}'
 
 # Create a member
 curl -X POST http://127.0.0.1:8000/members `
