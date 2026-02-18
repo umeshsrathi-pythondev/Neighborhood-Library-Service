@@ -19,7 +19,10 @@ This is a simple REST service for managing books, members, and lending operation
 
 ```powershell
 # Run PostgreSQL locally
- docker run --name library-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=library -p 5432:5432 -d postgres:16
+ 
+ 
+
+
 ```
 
 ### 2) Create tables
@@ -50,6 +53,10 @@ uvicorn app.main:app --reload
 
 The API will be at `http://127.0.0.1:8000` and Swagger UI at `/docs`.
 
+> **Tip:** if you don't have PostgreSQL available, the app will automatically fall back to using a local `sqlite`
+> database (`dev.db` in the project root) on startup. You can run the server without step 1/2 when using the
+> fallback, but the Docker/Postgres instructions above are required for production-like behavior.
+
 ## Example Requests
 
 ```powershell
@@ -76,5 +83,19 @@ curl -X POST http://127.0.0.1:8000/loans/return `
 # List loans
 curl http://127.0.0.1:8000/loans
 ```
+
+## Frontend
+
+A minimal React + Vite frontend is included in `frontend/`.
+
+Run the frontend:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend expects the API at `http://localhost:8000`. To change, set `VITE_API_BASE` in the environment.
 
 

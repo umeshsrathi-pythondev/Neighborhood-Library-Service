@@ -1,11 +1,22 @@
 
 from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.db import get_db
 
 app = FastAPI(title="Neighborhood Library Service", version="1.0.0")
+
+# Allow local frontend to access the API during development
+app.add_middleware(
+    CORSMiddleware,
+    # during development allow everything so frontend requests aren't blocked
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")
