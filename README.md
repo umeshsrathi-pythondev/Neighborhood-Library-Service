@@ -19,10 +19,8 @@ This is a simple REST service for managing books, members, and lending operation
 
 ```powershell
 # Run PostgreSQL locally
- 
- 
 
-
+docker run --name library-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=library -p 5432:5432 -d postgres:16
 ```
 
 ### 2) Create tables
@@ -53,9 +51,6 @@ uvicorn app.main:app --reload
 
 The API will be at `http://127.0.0.1:8000` and Swagger UI at `/docs`.
 
-> **Tip:** if you don't have PostgreSQL available, the app will automatically fall back to using a local `sqlite`
-> database (`dev.db` in the project root) on startup. You can run the server without step 1/2 when using the
-> fallback, but the Docker/Postgres instructions above are required for production-like behavior.
 
 ## Example Requests
 
@@ -63,7 +58,8 @@ The API will be at `http://127.0.0.1:8000` and Swagger UI at `/docs`.
 # Create a book
 curl -X POST http://127.0.0.1:8000/books `
   -H "Content-Type: application/json" `
-  -d '{"title":"Dune","author":"Frank Herbert","copies_total":2,"copies_available":2}'
+
+  -d '{"title":"Test Title1","author":"Test Author1","copies_total":2,"copies_available":2}'
 
 # Create a member
 curl -X POST http://127.0.0.1:8000/members `
