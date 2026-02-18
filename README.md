@@ -87,6 +87,7 @@ curl http://127.0.0.1:8000/loans
 ## Frontend
 
 A minimal React + Vite frontend is included in `frontend/`.
+Screenshots of all 3 pages Books, Members and Loans is also added in same location for reference.
 
 Run the frontend:
 
