@@ -1,4 +1,11 @@
 # Neighborhood Library Service (FastAPI + PostgreSQL)
+<img width="889" height="587" alt="image" src="https://github.com/user-attachments/assets/072ad91b-4359-47f9-950f-630c3f9ff44d" />
+
+<img width="892" height="407" alt="Members" src="https://github.com/user-attachments/assets/a032e066-98c5-4694-8a40-e85db6037d4b" />
+
+<img width="871" height="528" alt="Loans" src="https://github.com/user-attachments/assets/24d3b310-92ed-4493-b4e4-5b621991d9ad" />
+
+
 
 This is a simple REST service for managing books, members, and lending operations in a small library.
 
@@ -83,6 +90,7 @@ curl http://127.0.0.1:8000/loans
 ## Frontend
 
 A minimal React + Vite frontend is included in `frontend/`.
+Added screenshot of all 3 pages Books, Members and Loans at 'frontend/UI Screenshots' in root directory for reference
 
 Run the frontend:
 
